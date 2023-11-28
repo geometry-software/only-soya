@@ -1,0 +1,102 @@
+<mat-toolbar [ngStyle]="{ 'background-color': matToolbarBackgroundColor }">
+  <mat-toolbar-row>
+    <button
+      [ngStyle]="{ 'margin-left': matToolbarRowButtonMargin }"
+      mat-icon-button
+      (click)="drawer.toggle()"
+      onclick="this.blur()"
+    >
+      <mat-icon class="menu-icon" *ngIf="isUserUpdated">menu</mat-icon>
+      <mat-spinner [diameter]="20" *ngIf="!isUserUpdated"></mat-spinner>
+    </button>
+    <span class="toolbar-title">{{ toolBarTitleSignal() | translate }}</span>
+    <span class="toolbar-spacer"></span>
+    <button mat-icon-button *ngIf="hasNewDelivery" routerLink="delivery" onclick="this.blur()">
+      <mat-icon class="toolbar-action-icon">shopping_basket</mat-icon>
+    </button>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+      <mat-icon class="lang-icon">space_dashboard</mat-icon>
+    </button>
+    <button mat-icon-button onclick="this.blur()">
+      <mat-icon [matBadge]="dishesAmount" matBadgeColor="warn">local_mall</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item (click)="changeLanguage('pt')">
+        <span>portugués</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="changeLanguage('es')">
+        <span>español</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="changeLanguage('en')">
+        <span>English</span>
+      </button>
+    </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="menu1">
+      <mat-icon class="lang-icon">icecream</mat-icon>
+    </button>
+    <mat-menu #menu1="matMenu">
+      <button mat-menu-item (click)="changeUser('cafe')">
+        <span>cafe</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="changeUser('customer')">
+        <span>customer</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button mat-menu-item (click)="changeUser('admin')">
+        <span>admin</span>
+      </button>
+    </mat-menu>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<mat-drawer-container>
+  <mat-drawer #drawer [mode]="mode" [opened]="isDesktopSize" class="mat-drawer-scrollbar">
+    <div class="menu-list-container" [ngStyle]="{ 'margin-top': menuListContainerMargin }">
+      <ng-container *ngIf="isUserUpdated">
+        <ng-container *ngFor="let item of userMenuOptions">
+          <ng-container *ngIf="item.roles.includes(testUser.status)">
+            <div
+              class="menu-list-item"
+              [ngStyle]="{ 'margin-right': isDesktopSize ? 0 : '10px' }"
+              routerLinkActive="active-link"
+              [routerLinkActiveOptions]="{ exact: false }"
+              [routerLink]="item.link"
+              (click)="toggleDrawer()"
+            >
+              <div class="menu-list-item-icon">
+                <mat-icon>
+                  {{ item.icon }}
+                </mat-icon>
+              </div>
+              <div class="menu-list-item-text">
+                <div class="menu-list-item-title">
+                  {{ item.title | translate }}
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+  </mat-drawer>
+  <mat-drawer-content [ngStyle]="{ height: matDrawerContentHeight, 'background-color': matDrawerContentBackgroundColor }">
+    <ng-container *ngIf="isUserUpdated">
+      <div
+        class="router-outlet-container"
+        [ngStyle]="{
+          'background-color': routerOutletContainerBackgroundColor,
+          margin: routerOutletContainerMargin,
+          'border-radius': routerOutletBorderRadius,
+          height: routerOutletContainerHeight
+        }"
+      >
+        <div class="router-outlet-container-desktop" [ngClass]="{ 'router-outlet-container-mobile': !isDesktopSize }">
+          <router-outlet (activate)="onActivateRouter()"></router-outlet>
+        </div>
+      </div>
+    </ng-container>
+  </mat-drawer-content>
+</mat-drawer-container>

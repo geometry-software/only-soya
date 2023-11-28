@@ -1,0 +1,30 @@
+<!-- <div class="title-desc" *ngIf="isDeleteMenu">
+  <div *ngIf="!deliveryAmount && !openAmount" class="title-desc">
+    Cerrar el servicio y actualizar los pagos?
+  </div>
+  <div *ngIf="deliveryAmount || openAmount" class="order-action">
+    Cancelalas antes de cerrar el servicio
+  </div>
+  <div *ngIf="openAmount" class="order-info">
+    {{ openAmount }} ordenes cocinados
+  </div>
+  <div *ngIf="deliveryAmount" class="order-info">
+    {{ deliveryAmount }} ordenes entregados
+  </div>
+</div> -->
+
+<h3 cdkFocusInitial>{{ dialogData.title | translate }}</h3>
+<h4 *ngIf="dialogData.subtitle">{{ dialogData.subtitle | translate }}</h4>
+
+<div class="flex justify-end">
+  <div class="flex space-between gap-2">
+    <button mat-flat-button type="button" (click)="close()">
+      <span>No</span>
+    </button>
+    <div>
+      <button [disabled]="isLoading" mat-stroked-button type="button" (click)="confirm()">
+        <span>{{ !isLoading ? 'Sí' : '...' }}</span>
+      </button>
+    </div>
+  </div>
+</div>

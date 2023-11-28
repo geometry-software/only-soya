@@ -1,0 +1,14 @@
+<div *ngIf="data as item">
+  <p>R$ TOTAL: {{ item.totalAmount }}</p>
+  <div>Cafes: {{ item.cafeNames }}</div>
+  <div>cafeIds: {{ item.cafeIds }}</div>
+  <div>Customers: {{ item.customerNames }}</div>
+  <div>CustomerIds: {{ item.customerIds }}</div>
+  <button mat-icon-butoon (click)="print()">
+    <mat-icon>print</mat-icon>
+  </button>
+</div>
+
+<p *ngIf="isPrinting">make a screenshot instead</p>
+
+<!-- <ng-container *ngIf="layoutType == 'api'"> {{ data | json }}, {{ data.timestamp.toDate() }} </ng-container> -->

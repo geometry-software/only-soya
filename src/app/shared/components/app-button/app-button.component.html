@@ -1,0 +1,11 @@
+<button
+  [type]="buttonType"
+  [routerLink]="url"
+  [disabled]="disabled"
+  [ngClass]="{ back: 'back', save: 'save', edit: 'edit', delete: 'delete' }[type]"
+>
+  <mat-icon *ngIf="icon">{{ icon }}</mat-icon>
+  <div [ngStyle]="{ 'padding-left': icon ? '5px' : '0' }">
+    <span>{{ title | translate }}</span>
+  </div>
+</button>

@@ -1,0 +1,10 @@
+.text-overflow {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: inline-block;
+  white-space: nowrap;
+}
+
+mat-row {
+  height: 55px !important;
+}

@@ -1,0 +1,18 @@
+<div *ngFor="let item of data">
+  <div class="card">
+    <div class="image">
+      <img [src]="item.imgURL ?? cardDefaultImage" width="135px" />
+    </div>
+    <div class="content">
+      <div class="title">{{ item.name }}</div>
+      <div class="actions">
+        <div class="icons">
+          <img *ngIf="item.types.includes('vegan')" [src]="veganImage" height="20px" />
+          <img *ngIf="item.types.includes('gluten_free')" [src]="glutenFreeImage" height="20px" />
+          <img *ngIf="item.types.includes('sugar_free')" [src]="sugarFreeImage" height="20px" />
+        </div>
+        <button mat-button (click)="add.next(item)">ADD</button>
+      </div>
+    </div>
+  </div>
+</div>

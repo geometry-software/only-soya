@@ -1,0 +1,53 @@
+{
+  "BUTTON": {
+    "ADD": "Add",
+    "SAVE": "Save",
+    "EDIT": "Edit",
+    "DELETE": "Delete",
+    "SAVING": "Saving ..",
+    "INFO": "Info"
+  },
+  "MISC": {
+    "PLATE_CATEGORY": {
+      "STARTER": "Starter",
+      "SOUP": "Soup",
+      "SALAD": "Salad",
+      "MAIN": "Main",
+      "DRINK": "Drink",
+      "DESSERT": "Dessert",
+      "EXTRA": "Extra"
+    },
+    "PLATE_TYPE": {
+      "VEGAN": "Vegan",
+      "GLUTEN_FREE": "Gluten free",
+      "SUGAR_FREE": "Sugar free"
+    },
+    "SEARCH_PLACEHOLDER": "Buscar.."
+  },
+  "PLATES": {
+    "NAVBAR": "Plates",
+    "PAGE": {
+      "LIST": {
+        "TOOLBAR": "Plate list",
+        "TABLE": {
+          "SEARCH": "Search by name ..",
+          "NAME": "Name",
+          "CATEGORY": "Category",
+          "PRICE": "Price"
+        }
+      },
+      "CREATE": {
+        "TOOLBAR": "Add plate",
+        "NOTIFY_SUCCESS": "Created successfully"
+      },
+      "EDIT": {
+        "TOOLBAR": "Edit plate",
+        "NOTIFY_SUCCESS": "Updated successfully"
+      },
+      "DETAIL": {
+        "TOOLBAR": "Plate detail",
+        "DELETE_TITLE": "Delete the plate?"
+      }
+    }
+  }
+}

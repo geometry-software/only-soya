@@ -1,0 +1,95 @@
+button {
+  min-width: 60px !important;
+  max-width: 150px !important;
+  height: 40px !important;
+  border-radius: 25px;
+  border: 3px solid rgb(99, 153, 253);
+  color: rgb(99, 153, 253) !important;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-family: 'Open Sans', sans-serif !important;
+}
+
+span {
+  padding-right: 10px;
+}
+
+mat-icon {
+  padding-left: 7px;
+  transform: scale(0.9);
+}
+
+div {
+  text-transform: uppercase;
+}
+
+button:focus,
+button:active:focus,
+button.active:focus {
+  outline: none !important;
+}
+
+.back {
+  background-color: transparent !important;
+}
+
+.edit {
+  min-width: 100%;
+  background-color: transparent !important;
+  color: #666 !important;
+  border: 3px solid #666;
+}
+
+.delete {
+  min-width: 100%;
+  background-color: transparent !important;
+  color: rgb(220, 66, 66) !important;
+  border: 3px solid rgb(220, 66, 66);
+}
+
+.save {
+  min-width: 100%;
+  background-color: rgb(99, 153, 253) !important;
+  color: white !important;
+}
+
+.back:hover {
+  opacity: 0.8 !important;
+}
+
+.edit:hover {
+  opacity: 0.8 !important;
+}
+
+.delete:hover {
+  opacity: 0.8 !important;
+}
+
+.back:active {
+  background-color: transparent !important;
+}
+
+.save:disabled {
+  min-width: 100%;
+  background-color: #ddd !important;
+  color: white !important;
+  border: 3px solid #ddd;
+}
+
+.save:disabled:hover {
+  background-color: #ddd !important;
+  color: white !important;
+}
+
+.save:hover {
+  background-color: white !important;
+  color: rgb(99, 153, 253) !important;
+}
+
+.save:focus {
+  background-color: rgb(99, 153, 253) !important;
+  color: white !important;
+}

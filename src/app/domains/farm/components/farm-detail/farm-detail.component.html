@@ -1,0 +1,38 @@
+<ng-container *ngIf="item$ | async as data">
+  <div class="content-toolbar-padding">
+    <h6>Nombre</h6>
+    <p>{{ data.name }}</p>
+
+    <h6>Descripción</h6>
+    <p>{{ data.history || 'N/A' }}</p>
+
+    <h6>Tipo</h6>
+    <p>{{ plateTypeTranslate[data.type] | translate }}</p>
+
+    <ng-container *ngIf="data.price">
+      <h6>Precio</h6>
+      <p>{{ data.price }} mil</p>
+    </ng-container>
+
+    <ng-container *ngIf="data.imgURL">
+      <h6>Imagen</h6>
+      <img [src]="data.imgURL" width="50%" height="50%" style="border-radius: 8px" />
+    </ng-container>
+
+    <!-- TODO: When whole order process will be done -->
+    <!-- <h6>Historial</h6>
+
+    <mat-table [dataSource]="datasource">
+      <ng-container matColumnDef="timestamp">
+        <mat-header-cell *matHeaderCellDef> Fecha y hora</mat-header-cell>
+        <mat-cell *matCellDef="let element"> {{ element.timestamp.toDate() | date : 'MMMM d, h:mm a' }}</mat-cell>
+      </ng-container>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    </mat-table>
+    <mat-progress-bar mode="indeterminate" *ngIf="isLoading"></mat-progress-bar> -->
+  </div>
+</ng-container>
+
+<!-- <ng-template #loadingTemplate>
+  <app-loader></app-loader>
+</ng-template> -->

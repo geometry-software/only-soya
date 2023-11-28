@@ -1,0 +1,86 @@
+<ng-container *ngIf="getItem$ | async as data">
+  <div class="fixed-height-form">
+    <form [formGroup]="form">
+      <mat-form-field>
+        <mat-label>Enter plate name</mat-label>
+        <input matInput type="text" formControlName="name" />
+        <ng-container *ngIf="form.controls['name'].invalid && form.controls['name'].touched">
+          <mat-error>{{ getErrorMessage(form.controls['name']) }}</mat-error>
+        </ng-container>
+      </mat-form-field>
+
+      <mat-form-field>
+        <textarea rows="3" matInput placeholder="Description" formControlName="description"></textarea>
+      </mat-form-field>
+
+      <h5
+        [style.color]="
+          form.controls['category'].invalid && form.controls['category'].touched ? formTitleErrorColor : formTitleDefaultColor
+        "
+      >
+        Plate category
+      </h5>
+      <ng-container *ngIf="form.controls['category'].invalid && form.controls['category'].touched">
+        <div class="mat-error-field">{{ getErrorMessage(form.controls['category']) }}</div>
+      </ng-container>
+
+      <mat-radio-group class="app-radio-group" formControlName="category">
+        <mat-radio-button *ngFor="let category of plateCategoryTranslate | keyvalue" [value]="category.key">
+          {{ category.value | translate }}
+        </mat-radio-button>
+      </mat-radio-group>
+
+      <h5>Plate type</h5>
+
+      <ng-container formArrayName="types" *ngFor="let item of form.controls['types']['controls']; let i = index">
+        <div [formGroupName]="i">
+          <mat-checkbox [formControlName]="getTypeControls(i)">
+            {{ getTypeNames(i) }}
+          </mat-checkbox>
+        </div>
+      </ng-container>
+
+      <ng-container>
+        <h5
+          [style.color]="
+            form.controls['price'].invalid && form.controls['price'].touched ? formTitleErrorColor : formTitleDefaultColor
+          "
+        >
+          Price
+        </h5>
+        <ng-container *ngIf="form.controls['price'].invalid && form.controls['price'].touched">
+          <div class="mat-error-field">{{ getErrorMessage(form.controls['price']) }}</div>
+        </ng-container>
+        <mat-form-field style="width: 150px" floatLabel="always">
+          <input style="text-align: right" matInput type="number" placeholder="0" formControlName="price" />
+          <span matTextPrefix>R$</span>
+          <span matTextSuffix>.00</span>
+        </mat-form-field>
+      </ng-container>
+
+      <div>{{ imgURL }}</div>
+      <div style="color: seagreen; font-weight: 500; margin: 10px 0" *ngIf="isUploadedImg">
+        Imagen se ha actualizado con exito! Guarda la receta.
+      </div>
+
+      <span class="file-wrapper" *ngIf="!isUploadingImg">
+        <input type="file" name="photo" id="photo" (change)="updateImg($event)" />
+        <span class="button">Cambiar imagen</span>
+      </span>
+
+      <div *ngIf="showUploadButton && !isUploadingImg">
+        <br />
+        <button mat-stroked-button type="button" (click)="uploadFile()" style="color: rgb(99, 153, 253)">
+          <mat-icon>cloud_upload</mat-icon>
+          <span style="padding-left: 10px">Subir imagen a servidor</span>
+        </button>
+      </div>
+
+      <span *ngIf="isUploadingImg" class="upload-spinner">
+        <mat-progress-spinner mode="determinate" [value]="uploadProgress" [diameter]="25"></mat-progress-spinner>
+      </span>
+    </form>
+
+    <app-save-button [form]="form" [loading]="loadingState$ | async" (submit)="submit($event)"></app-save-button>
+  </div>
+</ng-container>

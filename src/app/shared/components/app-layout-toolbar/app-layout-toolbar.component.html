@@ -1,0 +1,18 @@
+<div class="py-[4px] h-[5px] w-full"><mat-progress-bar mode="indeterminate" *ngIf="isLoading$ | async"></mat-progress-bar></div>
+<div class="header-toolbar" *ngIf="layoutTypeSignal() as type">
+  <ng-container [ngSwitch]="type">
+    <ng-container *ngSwitchCase="'form'">
+      <app-button [title]="backToListButton" [type]="'back'" [icon]="'arrow_back'" [url]="url"></app-button>
+      <app-button *ngIf="id" [title]="'BUTTON.INFO'" [type]="'back'" [icon]="'folder'" [url]="url + '/' + id"></app-button>
+    </ng-container>
+    <ng-container *ngSwitchCase="'list'">
+      <app-button *ngIf="url" [title]="'BUTTON.ADD'" [icon]="'add'" [type]="'back'" [url]="getCreateUrl()"></app-button>
+      <input class="list-search-field" [formControl]="searchControl" [placeholder]="searchPlaceholder | translate" />
+    </ng-container>
+    <ng-container *ngSwitchCase="'detail'">
+      <app-button [title]="backTitle" [type]="'back'" [icon]="'arrow_back'" [url]="url"></app-button>
+      <app-button [title]="'BUTTON.EDIT'" [icon]="'edit'" [type]="'edit'" [url]="getEditUrl()"></app-button>
+      <app-button [title]="'BUTTON.DELETE'" [icon]="'clear'" [type]="'delete'" (click)="deleteItem.next(id)"></app-button>
+    </ng-container>
+  </ng-container>
+</div>

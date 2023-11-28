@@ -1,0 +1,31 @@
+<div class="table-loading-shade" *ngIf="downloadState$ | async"></div>
+
+<mat-tab-group (selectedTabChange)="changePlateCategory($event)">
+  <ng-container *ngIf="dataList$ | async as data">
+    <mat-tab [label]="(listLabels$ | async)?.all">
+      <ng-container *ngTemplateOutlet="data ? menuLayout : null; context: { $implicit: data }"></ng-container>
+    </mat-tab>
+    <mat-tab [label]="(listLabels$ | async)?.main">
+      <ng-container *ngTemplateOutlet="data ? menuLayout : null; context: { $implicit: data }"></ng-container>
+    </mat-tab>
+    <mat-tab [label]="(listLabels$ | async)?.starter">
+      <ng-container *ngTemplateOutlet="data ? menuLayout : null; context: { $implicit: data }"></ng-container>
+    </mat-tab>
+    <mat-tab [label]="(listLabels$ | async)?.soup">
+      <ng-container *ngTemplateOutlet="data ? menuLayout : null; context: { $implicit: data }"></ng-container>
+    </mat-tab>
+    <mat-tab [label]="(listLabels$ | async)?.salad">
+      <ng-container *ngTemplateOutlet="data ? menuLayout : null; context: { $implicit: data }"></ng-container>
+    </mat-tab>
+    <mat-tab [label]="(listLabels$ | async)?.dessert">
+      <ng-container *ngTemplateOutlet="data ? menuLayout : null; context: { $implicit: data }"></ng-container>
+    </mat-tab>
+    <mat-tab [label]="(listLabels$ | async)?.extra">
+      <ng-container *ngTemplateOutlet="data ? menuLayout : null; context: { $implicit: data }"></ng-container>
+    </mat-tab>
+  </ng-container>
+</mat-tab-group>
+
+<ng-template #menuLayout let-context>
+  <app-card [data]="context"></app-card>
+</ng-template>

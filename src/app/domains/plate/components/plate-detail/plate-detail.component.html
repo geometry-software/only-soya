@@ -1,0 +1,29 @@
+<ng-container *ngIf="item$ | async as item">
+  <div class="content-toolbar-padding">
+    <h6>Nome</h6>
+    <p>{{ item.name }}</p>
+
+    <h6>Description</h6>
+    <p>{{ item.description || 'N/A' }}</p>
+
+    <h6>Category</h6>
+    <p>{{ plateCategoryTranslate[item.category] | translate }}</p>
+
+    <h6>Type</h6>
+    <p>
+      <span *ngFor="let type of item.types; let i = index">
+        <span *ngIf="i > 0">, </span>
+        <span>{{ plateTypeTranslate[type] | translate }}</span>
+      </span>
+    </p>
+    <p *ngIf="item.types.length === 0">no type</p>
+
+    <h6>Precio</h6>
+    <p>{{ item.price }} R$</p>
+
+    <ng-container *ngIf="item.imgURL">
+      <h6>Imagen</h6>
+      <img [src]="item.imgURL" width="50%" height="50%" style="border-radius: 8px" />
+    </ng-container>
+  </div>
+</ng-container>

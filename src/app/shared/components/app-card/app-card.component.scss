@@ -1,0 +1,41 @@
+.card {
+  margin: 5px 0;
+  padding: 5px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  background-color: white;
+  .content {
+    padding-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .title {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 1.2em;
+    font-weight: 500;
+    width: 110px;
+  }
+  .actions {
+    display: flex;
+    justify-content: space-between;
+    .icons {
+      width: 75px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    button {
+      font-weight: 500;
+      font-size: 0.8em !important;
+      color: rgb(99, 153, 253);
+      font-family: 'Open Sans', sans-serif !important;
+    }
+  }
+}
+
+img {
+  display: block;
+  border-radius: 8px;
+}

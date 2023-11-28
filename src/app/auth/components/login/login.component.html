@@ -1,0 +1,63 @@
+<ng-container *ngIf="!userDisplayName && hasFirebasAuth">
+  <div class="action-bar">
+    <!--<button class="social-button" (click)="login('google')">
+      <img src="./../../../../assets/auth/google.png" width="40px" height="40px" />
+      <span>Sign in with Google</span>
+    </button>
+     <button class="social-button" (click)="login('facebook')">
+      <img src="./../../../../assets/auth/facebook.png" width="40px" height="40px" />
+      <span>Sign in with Facebook</span>
+    </button>
+    <button class="social-button" (click)="login('apple')">
+      <img src="./../../../../assets/auth/apple.png" width="40px" height="40px" />
+      <span>Sign in with Apple</span>
+    </button> -->
+    <div class="login-title">Login with phone</div>
+    <mat-form-field>
+      <input matInput placeholder="phone" [formControl]="phone" />
+    </mat-form-field>
+    <button mat-flat-button (click)="signInWithPhoneNumber()">send phone</button>
+    <mat-form-field>
+      <input matInput placeholder="code" [formControl]="code" />
+    </mat-form-field>
+    <button mat-button (click)="confirmPhoneCode()">confirm phone</button>
+
+    <br /><br />
+
+    <div class="login-title">Login with email</div>
+
+    <form [formGroup]="form" (ngSubmit)="signUpWithEmail(form)">
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email" />
+        <ng-container *ngIf="form.controls['email'].invalid && form.controls['email'].touched">
+          <mat-error>{{ getErrorMessage(form.controls['email']) }}</mat-error>
+        </ng-container>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input matInput type="text" formControlName="password" />
+        <ng-container *ngIf="form.controls['password'].invalid && form.controls['password'].touched">
+          <mat-error>{{ getErrorMessage(form.controls['password']) }}</mat-error>
+        </ng-container>
+      </mat-form-field>
+      <div class="flex justify-end">
+        <button mat-flat-button color="accent" type="submit">Send</button>
+      </div>
+    </form>
+  </div>
+
+  <div class="auth-desc">
+    <p>
+      App guarda la sesion del usuario con OAuth 2 y no comparta los datos personales como correo electronico, nombre del usuario
+      y historial de las ordenes con otros servicios.
+    </p>
+    <p>
+      OAuth 2 es una estructura de autorización que le permite a las aplicaciones obtener acceso limitado a cuentas de usuario en
+      un servicio HTTPS, como Facebook y Google. Delega la autenticación del usuario al servicio que aloja la cuenta del mismo y
+      autoriza a las aplicaciones de terceros el acceso a dicha cuenta de usuario. OAuth 2 no se utiliza en esta app.
+    </p>
+  </div>
+</ng-container>
+
+<div id="recaptcha-container"></div>
