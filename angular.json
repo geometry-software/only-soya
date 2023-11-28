@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "hara-cafe": {
+    "would-you-gto-cafe": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "hara-cafe:build:production"
+              "browserTarget": "Would you GTO-cafe:build:production"
             },
             "development": {
-              "browserTarget": "hara-cafe:build:development"
+              "browserTarget": "Would you GTO-cafe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "hara-cafe:build"
+            "browserTarget": "Would you GTO-cafe:build"
           }
         },
         "test": {
