@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "Would you GTO-cafe:build:production"
+              "browserTarget": "would-you-gto-cafe:build:production"
             },
             "development": {
-              "browserTarget": "Would you GTO-cafe:build:development"
+              "browserTarget": "would-you-gto-cafe:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Would you GTO-cafe:build"
+            "browserTarget": "would-you-gto-cafe:build"
           }
         },
         "test": {
