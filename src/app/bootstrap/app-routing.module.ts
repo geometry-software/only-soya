@@ -23,6 +23,11 @@ export const routes: Routes = [
         loadChildren: () => import('../domains/vegi/vegi.module').then((m) => m.VegiModule),
         canActivate: [],
       },
+      {
+        path: 'farm',
+        loadChildren: () => import('../domains/farm/farm.module').then((m) => m.FarmModule),
+        canActivate: [],
+      },
     ],
   },
 ]

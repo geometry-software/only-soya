@@ -6,14 +6,18 @@ import { FarmRoutingModule } from './farm-routing.module'
 import { TranslateModule } from '@ngx-translate/core'
 import { SharedModule } from '../../shared/shared.module'
 import { StoreModule } from '@ngrx/store'
-import { RecipeConstants } from './utils/farm.constants'
+import { FormConstants } from './utils/farm.constants'
 import { reducer } from './store/farm.reducer'
-import { RecipeEntityService } from './services/farm.service'
+import { FarmEntityService } from './services/farm.service'
 import { EffectsModule } from '@ngrx/effects'
 import { RecipeEffects } from './store/farm.effects'
+import { FarmFormComponent } from './components/farm-form/farm-form.component'
+import { LandOwnerLayoutComponent } from './components/farm-layout/farm-layout.component'
+import { FarmListComponent } from './components/farm-list/farm-list.component'
+import { FarmDetailComponent } from './components/farm-detail/farm-detail.component'
 
 @NgModule({
-  declarations: [RecipeFormComponent, RecipeListComponent, RecipeDetailComponent, RecipeLayoutComponent],
+  declarations: [LandOwnerLayoutComponent, FarmFormComponent, FarmDetailComponent, FarmListComponent],
   imports: [
     RouterModule,
     CommonModule,
@@ -21,9 +25,9 @@ import { RecipeEffects } from './store/farm.effects'
     ReactiveFormsModule,
     FarmRoutingModule,
     TranslateModule,
-    StoreModule.forFeature(RecipeConstants.storeFeatureKey, reducer),
+    StoreModule.forFeature(FormConstants.storeFeatureKey, reducer),
     EffectsModule.forFeature([RecipeEffects]),
   ],
-  providers: [RecipeEntityService],
+  providers: [FarmEntityService],
 })
 export class FarmModule {}

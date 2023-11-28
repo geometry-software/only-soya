@@ -3,20 +3,20 @@ import { Recipe, RecipeStatus } from './farm.model'
 import { RepositoryRequest, RepositoryRequestOrder, SizeRequest } from 'src/app/shared/repository/repository.model'
 import { Sort } from '@angular/material/sort'
 
-export abstract class RecipeConstants {
+export abstract class FormConstants {
   static readonly storeFeatureKey = 'RECIPES'
   static readonly collectionName = 'Recipes'
   static readonly defaultCreateStatus = 'active'
   static readonly defaultTableSort = 'timestamp'
   static readonly defaultSearchKey = 'name'
-  static readonly paginationTitle = 'recipes'
+  static readonly paginationTitle = 'Farm'
   static readonly paginationSize = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
   static readonly moduleUrl = '/recipes'
   static readonly tableColumns = ['name', 'type', 'price']
   static readonly disableSort = true
-  static readonly searchPlaceholder = 'RECIPES.PAGE.LIST.TABLE.SEARCH'
+  static readonly searchPlaceholder = 'Search by Farm'
   static readonly deleteTitle = 'RECIPES.PAGE.DETAIL.DELETE_TITLE'
-  static readonly backToListButton = 'RECIPES.NAVBAR'
+  static readonly backToListButton = 'Farm'
   static readonly defaultPaginationControlValue: PaginationRequest<Recipe> = {
     query: 'first',
     item: null,

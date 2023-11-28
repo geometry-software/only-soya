@@ -2,11 +2,11 @@ import { Injectable } from '@angular/core'
 import { Actions, createEffect, ofType } from '@ngrx/effects'
 import { catchError, map, mergeMap, of, tap, withLatestFrom } from 'rxjs'
 import { RecipeActions as ItemActions } from './farm.actions'
-import { RecipeEntityService } from '../services/farm.service'
+import { FarmEntityService } from '../services/farm.service'
 import { Recipe, RecipeStatus } from '../utils/farm.model'
 import { Router } from '@angular/router'
 import { ConfirmationService } from 'src/app/shared/services/confirmation.service'
-import { RecipeConstants } from '../utils/farm.constants'
+import { FormConstants } from '../utils/farm.constants'
 import { formatRequest } from '../../../shared/utils/format-request'
 import { Store } from '@ngrx/store'
 import { getItemsPageAmount, getResetRequestToTheFirstPage } from './farm.selectors'
@@ -17,13 +17,13 @@ export class RecipeEffects {
     private router: Router,
     private actions$: Actions,
     private store$: Store,
-    private entityService: RecipeEntityService,
+    private entityService: FarmEntityService,
     private confirmationService: ConfirmationService
   ) {}
 
-  readonly moduleUrl = RecipeConstants.moduleUrl
-  readonly deleteTitle = RecipeConstants.deleteTitle
-  readonly defaultCreateStatus = RecipeConstants.defaultCreateStatus
+  readonly moduleUrl = FormConstants.moduleUrl
+  readonly deleteTitle = FormConstants.deleteTitle
+  readonly defaultCreateStatus = FormConstants.defaultCreateStatus
 
   createItem$ = createEffect(() =>
     this.actions$.pipe(

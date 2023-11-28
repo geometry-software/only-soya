@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, OnInit, inject } from '@angular/core'
 import { FormControl } from '@angular/forms'
-import { RecipeConstants } from '../../utils/farm.constants'
+import { FormConstants } from '../../utils/farm.constants'
 import { Observable, debounceTime, tap } from 'rxjs'
 import { Store, select } from '@ngrx/store'
 import { getItemId, getLayoutLoading } from '../../store/farm.selectors'
@@ -12,7 +12,7 @@ import { RecipeActions as ItemActions } from '../../store/farm.actions'
   styleUrls: ['./farm-layout.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RecipeLayoutComponent implements OnInit {
+export class LandOwnerLayoutComponent implements OnInit {
   // DI
   readonly store$: Store = inject(Store)
 
@@ -22,12 +22,12 @@ export class RecipeLayoutComponent implements OnInit {
 
   // Other properties
   readonly searchControl = new FormControl()
-  readonly moduleUrl = RecipeConstants.moduleUrl
-  readonly backTitle = RecipeConstants.paginationTitle
-  readonly backToListButton = RecipeConstants.backToListButton
-  readonly searchPlaceholder = RecipeConstants.searchPlaceholder
-  readonly defaultSearchKey = RecipeConstants.defaultSearchKey
-  readonly defaultFirstPageRequest = RecipeConstants.defaultFirstPageRequest
+  readonly moduleUrl = FormConstants.moduleUrl
+  readonly backTitle = FormConstants.paginationTitle
+  readonly backToListButton = FormConstants.backToListButton
+  readonly searchPlaceholder = FormConstants.searchPlaceholder
+  readonly defaultSearchKey = FormConstants.defaultSearchKey
+  readonly defaultFirstPageRequest = FormConstants.defaultFirstPageRequest
 
   ngOnInit(): void {
     this.searchControl.valueChanges

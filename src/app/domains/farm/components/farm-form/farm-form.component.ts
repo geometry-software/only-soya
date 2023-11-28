@@ -20,7 +20,7 @@ import { SignalService } from 'src/app/shared/services/signal.service'
   styleUrls: ['./farm-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RecipeFormComponent implements OnInit {
+export class FarmFormComponent implements OnInit {
   // Selectors
   readonly loadingState$: Observable<boolean> = this.store$.select(getItemLoadingState)
   readonly getItem$: Observable<Recipe> = this.store$.select(getItem)

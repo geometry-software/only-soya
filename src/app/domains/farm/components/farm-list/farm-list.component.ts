@@ -4,7 +4,7 @@ import { Observable, shareReplay, tap } from 'rxjs'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Store } from '@ngrx/store'
 import { Recipe } from '../../utils/farm.model'
-import { PLATE_TYPE_TRANSLATE, RecipeConstants } from '../../utils/farm.constants'
+import { PLATE_TYPE_TRANSLATE, FormConstants } from '../../utils/farm.constants'
 import { RecipeActions as ItemActions } from '../../store/farm.actions'
 import { getItems, getItemsLoadingState, getPaginationResponse } from '../../store/farm.selectors'
 import { FormControl } from '@angular/forms'
@@ -20,7 +20,7 @@ import { SignalService } from 'src/app/shared/services/signal.service'
   styleUrls: ['./farm-list.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RecipeListComponent implements OnInit {
+export class FarmListComponent implements OnInit {
   // Selectors
   readonly dataList$: Observable<Recipe[]> = this.store$.select(getItems)
   readonly downloadState$: Observable<boolean> = this.store$.select(getItemsLoadingState).pipe(shareReplay(1))
@@ -31,15 +31,15 @@ export class RecipeListComponent implements OnInit {
   @ViewChild(MatSort, { static: false }) sort: MatSort
 
   // Constants
-  readonly defaultPaginationControlValue = RecipeConstants.defaultPaginationControlValue
-  readonly defaultSizeControlValue = RecipeConstants.defaultSizeControlValue
-  readonly tableColumns = RecipeConstants.tableColumns
-  readonly moduleUrl = RecipeConstants.moduleUrl
-  readonly defaultOrderControlValue = RecipeConstants.defaultOrderControlValue
+  readonly defaultPaginationControlValue = FormConstants.defaultPaginationControlValue
+  readonly defaultSizeControlValue = FormConstants.defaultSizeControlValue
+  readonly tableColumns = FormConstants.tableColumns
+  readonly moduleUrl = FormConstants.moduleUrl
+  readonly defaultOrderControlValue = FormConstants.defaultOrderControlValue
   readonly tableLoadingOpacity = SharedConstants.tableLoadingOpacity
-  readonly defaultRequestStatus = RecipeConstants.defaultRequestStatus
-  readonly defaultTableSort = RecipeConstants.defaultTableSort
-  readonly disableSort = RecipeConstants.disableSort
+  readonly defaultRequestStatus = FormConstants.defaultRequestStatus
+  readonly defaultTableSort = FormConstants.defaultTableSort
+  readonly disableSort = FormConstants.disableSort
 
   // Controls
   paginationControl: FormControl<PaginationRequest<Recipe>> = new FormControl(this.defaultPaginationControlValue)

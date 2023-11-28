@@ -15,7 +15,7 @@ import { Observable } from 'rxjs'
   styleUrls: ['./farm-detail.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RecipeDetailComponent implements OnInit {
+export class FarmDetailComponent implements OnInit {
   itemId: string
   loadingState$: Observable<boolean> = this.store$.select(getItemLoadingState)
   item$: Observable<Recipe> = this.store$.select(getItem)

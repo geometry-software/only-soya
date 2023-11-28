@@ -7,10 +7,10 @@ import {
   RepositoryRequestQuery,
   RepositoryResponseEntity,
 } from 'src/app/shared/repository/repository.model'
-import { RecipeConstants } from '../utils/farm.constants'
+import { FormConstants } from '../utils/farm.constants'
 
 export const RecipeActions = createActionGroup({
-  source: RecipeConstants.storeFeatureKey,
+  source: FormConstants.storeFeatureKey,
   events: {
     'Create Item Form Init': emptyProps(),
     'Create Item': props<{ item: Recipe }>(),

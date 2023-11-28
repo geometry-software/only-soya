@@ -50,4 +50,10 @@ export const userMenuOptions: Array<MenuOption> = [
     link: 'vegi/payments',
     roles: ['customer', 'admin'],
   },
+  {
+    title: 'Farm',
+    icon: 'category',
+    link: 'farm/stats',
+    roles: ['customer', 'cafe', 'admin'],
+  },
 ]

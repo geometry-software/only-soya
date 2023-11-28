@@ -2,12 +2,12 @@ import { Injectable, inject } from '@angular/core'
 import { Observable, delay } from 'rxjs'
 import { RepositoryService } from 'src/app/shared/repository/repository.service'
 import { OrderRequest, RepositoryEntityServiceI, RepositoryResponseEntity } from 'src/app/shared/repository/repository.model'
-import { RecipeConstants } from '../utils/farm.constants'
+import { FormConstants } from '../utils/farm.constants'
 
 @Injectable()
-export class RecipeEntityService implements RepositoryEntityServiceI {
-  readonly collection = RecipeConstants.collectionName
-  readonly collectionLog = RecipeConstants.collectionName + '_log'
+export class FarmEntityService implements RepositoryEntityServiceI {
+  readonly collection = FormConstants.collectionName
+  readonly collectionLog = FormConstants.collectionName + '_log'
   readonly repositoryService: RepositoryService = inject(RepositoryService)
 
   getAll<T>(): Observable<T[]> {

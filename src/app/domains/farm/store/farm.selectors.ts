@@ -1,10 +1,10 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store'
 import { State } from './farm.reducer'
-import { RecipeConstants } from '../utils/farm.constants'
+import { FormConstants } from '../utils/farm.constants'
 
-const storeFeatureKey: string = RecipeConstants.storeFeatureKey
-const paginationTitle: string = RecipeConstants.paginationTitle
-const paginationSize: Array<number> = RecipeConstants.paginationSize
+const storeFeatureKey: string = FormConstants.storeFeatureKey
+const paginationTitle: string = FormConstants.paginationTitle
+const paginationSize: Array<number> = FormConstants.paginationSize
 
 export const getState = createFeatureSelector<State>(storeFeatureKey)
 export const getItems = createSelector(getState, (state) => state.items?.data)
