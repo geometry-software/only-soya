@@ -1,5 +1,5 @@
-# would-you-gto Cafe
+# would- you- Cafe
 
 ![Image text](./src/assets/images//favicon.png)
 
-## would-you-gto Cafe is an app where people who prefer vegetarian lifestyle, cook delicious food and offer it to others
+## as a web app for people who prefer vegetarian lifestyle, cook delicious food and offer it to others
