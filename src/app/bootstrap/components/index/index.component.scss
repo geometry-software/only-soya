@@ -16,12 +16,12 @@
 .logo {
   background-color: #e0ea92;
   border-radius: 50%;
-  height: 170px;
-  width: 170px;
+  height: 120px;
+  width: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 2.2em;
+  font-size: 1.7em;
   color: #fffae6;
   opacity: 0.9;
   cursor: default;
@@ -67,4 +67,16 @@
   margin-top: 5vh;
   font-size: 0.8em;
   font-weight: 400;
+}
+
+.chef {
+  margin: 2vh 0;
+  display: flex;
+  justify-content: flex-start;
+  &-name {
+    color: #333;
+  }
+  &-intro {
+    color: #555;
+  }
 }
