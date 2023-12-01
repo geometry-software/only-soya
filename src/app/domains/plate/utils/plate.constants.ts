@@ -1,6 +1,6 @@
 import { PaginationRequest } from 'src/app/shared/model/pagination.model'
-import { Plate, PlateRepositoryRequest, PlateStatus } from './plate.model'
-import { RepositoryRequest, RepositoryRequestOrder, SizeRequest } from 'src/app/shared/repository/repository.model'
+import { Plate, PlateRepositoryRequest } from './plate.model'
+import { RepositoryRequestOrder, SizeRequest } from 'src/app/shared/repository/repository.model'
 import { Sort } from '@angular/material/sort'
 
 export abstract class PlateConstants {
@@ -11,7 +11,7 @@ export abstract class PlateConstants {
   static readonly defaultSearchKey = 'name'
   static readonly paginationTitle = 'plates'
   static readonly paginationSize = [5, 10, 20]
-  static readonly moduleUrl = '/menu'
+  static readonly moduleUrl = '/cafe/menu'
   static readonly tableColumns = ['name', 'category', 'price']
   static readonly disableSort = true
   static readonly searchPlaceholder = 'PLATES.PAGE.LIST.TABLE.SEARCH'

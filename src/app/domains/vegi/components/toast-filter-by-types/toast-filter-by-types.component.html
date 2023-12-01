@@ -1,0 +1,15 @@
+<div class="flex justify-center" [@fadeInOnEnter] [@fadeOutOnLeave]>
+  <mat-button-toggle-group multiple>
+    <mat-button-toggle
+      [disabled]="downloadState$ | async"
+      (click)="change(type.key)"
+      [value]="type.key"
+      *ngFor="let type of plateTypeTranslate | keyvalue"
+    >
+      <img *ngIf="type.key === 'vegan'" [src]="veganImage" height="25px" />
+      <img *ngIf="type.key === 'gluten_free'" [src]="glutenFreeImage" height="25px" />
+      <img *ngIf="type.key === 'sugar_free'" [src]="sugarFreeImage" height="25px" />
+      <div>{{ type.value | translate }}</div>
+    </mat-button-toggle>
+  </mat-button-toggle-group>
+</div>

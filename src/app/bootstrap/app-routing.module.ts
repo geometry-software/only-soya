@@ -14,7 +14,7 @@ export const routes: Routes = [
         loadChildren: () => import('../auth/auth.module').then((m) => m.AuthModule),
       },
       {
-        path: 'menu',
+        path: 'cafe',
         loadChildren: () => import('../domains/plate/plate.module').then((m) => m.PlateModule),
         canActivate: [],
       },

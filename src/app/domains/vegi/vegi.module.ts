@@ -14,9 +14,10 @@ import { CustomerEffects } from './store/customer.effects'
 import { CustomerMenuComponent } from './components/customer-menu/customer-menu.component'
 import { CheckOutComponent } from './components/check-out/check-out.component'
 import { PlateEntityService } from '../plate/services/plate.service'
+import { ToastFilterByTypesComponent } from './components/toast-filter-by-types/toast-filter-by-types.component'
 
 @NgModule({
-  declarations: [CustomerMenuComponent, CheckOutComponent],
+  declarations: [CustomerMenuComponent, CheckOutComponent, ToastFilterByTypesComponent],
   imports: [
     RouterModule,
     CommonModule,

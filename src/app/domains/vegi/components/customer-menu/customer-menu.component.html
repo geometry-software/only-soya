@@ -7,25 +7,9 @@
   <button mat-icon-button>
     <mat-icon class="lang-icon">swap_vert</mat-icon>
   </button>
-  <button mat-icon-button (click)="showPlateTypeFilter()">
+  <button mat-icon-button (click)="showFilter()">
     <mat-icon class="lang-icon">tune</mat-icon>
   </button>
-</div>
-
-<div class="flex justify-end" *ngIf="hasPlateTypeFilter" [@fadeInDownOnEnter] [@fadeOutUpOnLeave]>
-  <mat-button-toggle-group multiple>
-    <mat-button-toggle
-      [disabled]="downloadState$ | async"
-      (click)="changePlateType(type.key)"
-      [value]="type.key"
-      *ngFor="let type of plateTypeTranslate | keyvalue"
-    >
-      <img *ngIf="type.key === 'vegan'" [src]="veganImage" height="25px" />
-      <img *ngIf="type.key === 'gluten_free'" [src]="glutenFreeImage" height="25px" />
-      <img *ngIf="type.key === 'sugar_free'" [src]="sugarFreeImage" height="25px" />
-      <div>{{ type.value | translate }}</div>
-    </mat-button-toggle>
-  </mat-button-toggle-group>
 </div>
 
 <mat-tab-group (selectedTabChange)="changePlateCategory($event)">

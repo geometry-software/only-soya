@@ -61,6 +61,7 @@ export class PlateListComponent implements OnInit {
   ngOnInit() {
     this.initData()
     this.setSignals()
+    console.log(1)
   }
 
   initData() {

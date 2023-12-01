@@ -1,38 +1,34 @@
 import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core'
 import { Sort } from '@angular/material/sort'
-import { Observable, shareReplay, tap } from 'rxjs'
+import { Observable, filter, shareReplay, tap } from 'rxjs'
 import { ActivatedRoute, Router } from '@angular/router'
 import { Store } from '@ngrx/store'
 import { Customer, Payment } from '../../utils/customer.model'
 import { CustomerConstants } from '../../utils/customer.constants'
 import { CustomeActions as ItemActions } from '../../store/customer.actions'
-import { getItems, getItemsLoadingState, getListLabels, getPaginationResponse } from '../../store/customer.selectors'
+import { getItems, getItemsLoadingState, getListLabels } from '../../store/customer.selectors'
 import { FormControl } from '@angular/forms'
-import { PaginationRequest, PaginationResponse } from 'src/app/shared/model/pagination.model'
+import { PaginationRequest } from 'src/app/shared/model/pagination.model'
 import { SizeRequest } from 'src/app/shared/repository/repository.model'
 import { SharedConstants } from 'src/app/shared/utils/shared.constants'
 import { combineListControls } from '../../utils/combine-list-controls'
 import { SignalService } from 'src/app/shared/services/signal.service'
 import { PLATE_CATEGORY_TRANSLATE, PLATE_TYPE_TRANSLATE, PlateCategory, PlateType } from 'src/app/domains/plate/utils/plate.model'
 import { MatTabChangeEvent } from '@angular/material/tabs'
-import { fadeInDownOnEnterAnimation, fadeOutUpOnLeaveAnimation } from 'angular-animations'
+import { MatBottomSheet } from '@angular/material/bottom-sheet'
+import { ToastFilterByTypesComponent } from '../toast-filter-by-types/toast-filter-by-types.component'
 
 @Component({
   selector: 'app-customer-menu',
   templateUrl: './customer-menu.component.html',
   styleUrls: ['./customer-menu.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
-  animations: [fadeInDownOnEnterAnimation(), fadeOutUpOnLeaveAnimation()],
 })
 export class CustomerMenuComponent implements OnInit {
   // Selectors
   readonly dataList$: Observable<Customer[]> = this.store$.select(getItems).pipe(shareReplay(1))
   readonly downloadState$: Observable<boolean> = this.store$.select(getItemsLoadingState).pipe(shareReplay(1))
   readonly listLabels$ = this.store$.select(getListLabels).pipe(shareReplay(1))
-
-  veganImage = CustomerConstants.veganImage
-  glutenFreeImage = CustomerConstants.glutenFreeImage
-  sugarFreeImage = CustomerConstants.sugarFreeImage
 
   hasPlateTypeFilter: boolean
 
@@ -64,7 +60,8 @@ export class CustomerMenuComponent implements OnInit {
     private store$: Store,
     private route: ActivatedRoute,
     private router: Router,
-    private signalService: SignalService
+    private signalService: SignalService,
+    private matBottomSheet: MatBottomSheet
   ) {}
 
   ngOnInit() {
@@ -106,10 +103,6 @@ export class CustomerMenuComponent implements OnInit {
     this.plateCategoryControl.setValue(category as PlateCategory)
   }
 
-  changePlateType(type: string) {
-    this.plateTypeControl.setValue(type as PlateType)
-  }
-
   showPlateTypeFilter() {
     this.hasPlateTypeFilter = !this.hasPlateTypeFilter
   }
@@ -118,14 +111,25 @@ export class CustomerMenuComponent implements OnInit {
     const order: Payment = {
       plates: event,
       timestamp: new Date(),
-      cafeNames: 'Hello Cafe',
+      cafeNames: 'Would- You- Cafe',
       cafeIds: '123, ',
-      customerNames: 'Hello Cafe',
-      customerIds: '123, ',
-      totalAmount: '4.30',
-      totalChange: 'R$',
+      customerNames: 'Hello Customer',
+      customerIds: '456, ',
+      totalAmount: '400',
+      totalChange: 'of some coins',
     }
     this.signalService.setCheckoutPayload(order)
     this.router.navigateByUrl('/vegi/payments')
+  }
+
+  showFilter(): void {
+    this.matBottomSheet
+      .open(ToastFilterByTypesComponent)
+      .afterDismissed()
+      .pipe(
+        filter((value) => !!value),
+        tap((type) => this.plateTypeControl.setValue(type as PlateType))
+      )
+      .subscribe()
   }
 }

@@ -18,12 +18,21 @@ import { markInvalidFields } from 'src/app/shared/utils/mark-invalid-fields'
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class LoginComponent implements OnInit {
+  // Auth config
   hasFirebasAuth: boolean
-  userDisplayName: string
+  hasInAppAuth: boolean
   authUser: any
+  appUser: any
+
+  // Auth By Email
   form: FormGroup
 
-  getErrorMessage = getErrorMessage
+  // Auth By Phone
+  phone = new FormControl(null)
+  code = new FormControl(null)
+  confirmationCodeBySMS: any
+
+  readonly getErrorMessage = getErrorMessage
 
   constructor(
     private store$: Store,
@@ -35,7 +44,6 @@ export class LoginComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.initUserType()
     this.initFirebaseAuth()
     this.initForm()
   }
@@ -52,25 +60,9 @@ export class LoginComponent implements OnInit {
       .pipe(
         tap((value: any) => {
           this.hasFirebasAuth = true
-          if (value) {
-            this.userDisplayName = value.displayName
-            console.log(this.userDisplayName)
-          } else {
-            this.userDisplayName = null
-          }
-
-          this.cdr.markForCheck()
         })
       )
       .subscribe()
-  }
-
-  initUserType() {
-    if (this.route.snapshot.routeConfig.path.includes('jobs')) {
-      console.log('jobs')
-    } else {
-      console.log('customer')
-    }
   }
 
   login(provider: AuthProvider) {
@@ -98,18 +90,15 @@ export class LoginComponent implements OnInit {
     } else markInvalidFields(form)
   }
 
-  phone = new FormControl(null)
-  code = new FormControl(null)
-  confirmation
   signInWithPhoneNumber() {
     const capcha = new firebase.auth.RecaptchaVerifier('recaptcha-container', { size: 'invisible' })
     this.authEntityService
       .signInWithPhoneNumber(this.phone.value, capcha)
-      .then((result) => (this.confirmation = result))
+      .then((result) => (this.confirmationCodeBySMS = result))
       .catch((error) => console.log(error))
   }
 
   confirmPhoneCode() {
-    this.confirmation.confirm(this.code.value)
+    this.confirmationCodeBySMS.confirm(this.code.value)
   }
 }

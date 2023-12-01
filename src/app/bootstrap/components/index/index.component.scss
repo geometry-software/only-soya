@@ -51,14 +51,18 @@
 }
 
 .subtitle {
-  font-size: 1.35em;
+  font-size: 1.5em;
   font-weight: 400;
   letter-spacing: 2px;
   text-align: justify;
-  padding: 0 20px;
+  padding: 20px 20px 20px 0;
   cursor: default;
-  &-color {
-    color: #7acaa6;
+  &-logo {
+    background-color: #7acaa6;
+    width: 100px;
+    border-radius: 10px;
+    padding: 5px;
+    color: #f1f1f1;
     font-weight: 700;
   }
 }
@@ -70,9 +74,7 @@
 }
 
 .chef {
-  margin: 2vh 0;
-  display: flex;
-  justify-content: flex-start;
+  margin: 10px;
   &-name {
     color: #333;
   }
