@@ -18,7 +18,7 @@ export class NavbarComponent implements OnInit {
   testUser: AuthUser = {
     name: 'Cafe user',
     status: 'cafe',
-    uid: 'admin_1',
+    uid: '123',
   }
 
   hasNewDelivery: boolean
@@ -50,8 +50,6 @@ export class NavbarComponent implements OnInit {
 
   ngOnInit(): void {
     this.initUserData()
-    this.checkDelivery()
-    this.checkClient()
     this.updateScreenSize()
     this.initTranslate()
   }
@@ -92,20 +90,6 @@ export class NavbarComponent implements OnInit {
       this.hasFirebaseAuth = true
       this.isUserUpdated = true
     })
-  }
-
-  checkDelivery(): void {
-    // this.daoDeliveryService.checkDelivery().subscribe((value) => {
-    //   if (value?.length) this.hasNewDelivery = true
-    //   else this.hasNewDelivery = false
-    // })
-  }
-
-  checkClient(): void {
-    // this.daoClient.getNewClients().subscribe((value) => {
-    //   if (value.length !== 0) this.hasNewClient = true
-    //   else this.hasNewClient = false
-    // })
   }
 
   toggleDrawer(): void {
