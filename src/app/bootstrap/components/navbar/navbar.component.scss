@@ -6,6 +6,7 @@ mat-toolbar {
 mat-drawer-content {
   display: flex;
   overflow-y: hidden;
+  overflow-x: hidden;
 }
 
 .mat-drawer-side {
@@ -57,17 +58,17 @@ mat-drawer-container {
 
 .menu-list-item:hover {
   transition: all 0.1s ease-in-out;
-  background-color: #d1d1d1;
+  background-color: #f0ed7b;
   opacity: 0.9;
 }
 
 .menu-list-item:hover:not(.active) {
-  background-color: #3dac6d;
+  background-color: #f4f193;
   opacity: 1;
 }
 
 .active-link {
-  background-color: #3dac6d;
+  background-color: #f4f193;
 }
 
 .menu-list-item-icon {
@@ -146,7 +147,6 @@ mat-drawer-container {
   position: sticky;
   top: 0;
   width: 100%;
-  background-color: #f1f1f1 !important;
   width: calc(100vw - 260px);
 }
 
@@ -161,6 +161,7 @@ mat-drawer-container {
   margin: 0;
   padding: 0 10px;
   height: calc(100vh - 56px);
+  width: calc(100vh - 300px);
 }
 
 .desktop-dashboard {

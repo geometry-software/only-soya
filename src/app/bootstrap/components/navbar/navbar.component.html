@@ -18,7 +18,7 @@
       <mat-icon class="lang-icon">space_dashboard</mat-icon>
     </button>
     <button mat-icon-button onclick="this.blur()">
-      <mat-icon [matBadge]="dishesAmount" matBadgeColor="warn">local_mall</mat-icon>
+      <mat-icon [matBadge]="dishesAmount" matBadgeColor="accent">local_mall</mat-icon>
     </button>
     <mat-menu #menu="matMenu">
       <button mat-menu-item (click)="changeLanguage('pt')">
@@ -36,6 +36,7 @@
     <button mat-icon-button [matMenuTriggerFor]="menu1">
       <mat-icon class="lang-icon">icecream</mat-icon>
     </button>
+    <!-- <span>{{ testUser.status }}</span> -->
     <mat-menu #menu1="matMenu">
       <button mat-menu-item (click)="changeUser('cafe')">
         <span>cafe</span>
@@ -45,8 +46,8 @@
         <span>customer</span>
       </button>
       <mat-divider></mat-divider>
-      <button mat-menu-item (click)="changeUser('admin')">
-        <span>admin</span>
+      <button mat-menu-item (click)="changeUser('farm')">
+        <span>farm</span>
       </button>
     </mat-menu>
   </mat-toolbar-row>
@@ -90,7 +91,7 @@
           'background-color': routerOutletContainerBackgroundColor,
           margin: routerOutletContainerMargin,
           'border-radius': routerOutletBorderRadius,
-          height: routerOutletContainerHeight
+          height: routerOutletContainerHeight,
         }"
       >
         <div class="router-outlet-container-desktop" [ngClass]="{ 'router-outlet-container-mobile': !isDesktopSize }">

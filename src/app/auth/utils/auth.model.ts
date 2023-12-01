@@ -19,4 +19,4 @@ export interface AuthStatusTotalResponse {
 
 export type AuthProvider = 'google' | 'facebook' | 'apple' | 'anonymous'
 
-export type AuthStatus = 'cafe' | 'customer' | 'admin' | 'requested' | 'blocked'
+export type AuthStatus = 'cafe' | 'customer' | 'farm' | 'requested' | 'blocked'

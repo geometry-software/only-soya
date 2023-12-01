@@ -17,7 +17,7 @@ export class NavbarComponent implements OnInit {
 
   testUser: AuthUser = {
     name: 'Cafe user',
-    status: 'admin',
+    status: 'cafe',
     uid: 'admin_1',
   }
 
@@ -78,9 +78,9 @@ export class NavbarComponent implements OnInit {
       }
     } else {
       this.testUser = {
-        name: 'Cafe user',
-        status: 'admin',
-        uid: 'admin_1',
+        name: 'Farm user',
+        status: 'farm',
+        uid: '789',
       }
     }
     this.signalService.setUserData(this.testUser)
@@ -132,7 +132,7 @@ export class NavbarComponent implements OnInit {
       this.menuListContainerMargin = '0'
     } else {
       this.isDesktopSize = false
-      this.routerOutletContainerBackgroundColor = '#f1f1f1'
+      this.routerOutletContainerBackgroundColor = '#fff'
       this.routerOutletContainerHeight = 'calc(100vh)'
       this.matDrawerContentHeight = 'calc(100vh - 60px)'
       this.matDrawerContentBackgroundColor = '#fafafa'

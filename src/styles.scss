@@ -20,11 +20,11 @@ body {
   background: #f1f1f1;
 }
 ::-webkit-scrollbar-thumb {
-  background: #3dac6d;
+  background: #edf6ab;
   border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #57d28c;
+  background: #e0ea92;
   cursor: pointer !important;
 }
 
@@ -224,8 +224,8 @@ label {
 }
 
 .mat-mdc-progress-bar {
-  --mdc-linear-progress-active-indicator-color: #3dac6d;
-  --mdc-linear-progress-track-color: #ccc;
+  --mdc-linear-progress-active-indicator-color: #f1f1f1;
+  --mdc-linear-progress-track-color: #a3f1ce;
 }
 
 .mat-mdc-tab.mdc-tab--active .mdc-tab__text-label {
@@ -256,5 +256,5 @@ label {
 
 .mat-mdc-progress-spinner .mdc-circular-progress__determinate-circle,
 .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
-  stroke: #3dac6d !important;
+  stroke: #e0ea92 !important;
 }

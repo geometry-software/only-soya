@@ -24,13 +24,13 @@ export const userMenuOptions: Array<MenuOption> = [
     title: 'Login',
     icon: 'app_settings_alt',
     link: 'login/',
-    roles: ['cafe', 'customer', 'admin'],
+    roles: ['cafe', 'customer', 'farm'],
   },
   {
     title: 'Users',
     icon: 'group',
     link: 'login/users',
-    roles: ['cafe', 'customer'],
+    roles: ['cafe', 'customer', 'farm'],
   },
   {
     title: 'Menu',
@@ -48,12 +48,18 @@ export const userMenuOptions: Array<MenuOption> = [
     title: 'Payments',
     icon: 'sort',
     link: 'vegi/payments',
-    roles: ['customer', 'admin'],
+    roles: ['customer', 'cafe', 'farm'],
   },
   {
-    title: 'Farm',
+    title: 'Farms',
     icon: 'category',
     link: 'farm/stats',
-    roles: ['customer', 'cafe', 'admin'],
+    roles: ['farm'],
+  },
+  {
+    title: 'Fields',
+    icon: 'pie_chart',
+    link: 'farm/stats',
+    roles: ['customer', 'cafe', 'farm'],
   },
 ]
